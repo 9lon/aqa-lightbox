@@ -1,6 +1,8 @@
-<link rel="import" href="../polymer/polymer-element.html">
-<dom-module id="aqa-lightbox-img">
-    <template>
+import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+class aqaLightboxImg extends PolymerElement {
+  static get template() {
+    return html`
         <style>
             #myImg {
                 border-radius: 5px;
@@ -112,28 +114,26 @@
         </style>
 
         <div id="myModal" class="modal" on-click="close">
-            <span class="close">&times;</span>
+            <span class="close">×</span>
             <img class="modal-content" id="img01">
             <div id="caption"></div>
         </div>
-    </template>
-    <script>
-        class aqaLightboxImg extends Polymer.Element {
-            static get is() { return 'aqa-lightbox-img'; }
-            static get properties() {
-                return {
-                }
-            }
-            open(data){
-                // alert('show me')
-                this.$.myModal.style.display = "block";
-                this.$.img01.src = data;
-            }
-            close(e){
-                if(e.target.localName != 'img')
-                    this.$.myModal.style.display = "none";
-            }
-        }
-        window.customElements.define(aqaLightboxImg.is, aqaLightboxImg);
-    </script>
-</dom-module>
+`;
+  }
+
+  static get is() { return 'aqa-lightbox-img'; }
+  static get properties() {
+      return {
+      }
+  }
+  open(data){
+      // alert('show me')
+      this.$.myModal.style.display = "block";
+      this.$.img01.src = data;
+  }
+  close(e){
+      if(e.target.localName != 'img')
+          this.$.myModal.style.display = "none";
+  }
+}
+window.customElements.define(aqaLightboxImg.is, aqaLightboxImg);
